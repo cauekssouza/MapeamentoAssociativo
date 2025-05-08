@@ -4,14 +4,14 @@ class CacheAssociativo:
     def __init__(self, tamanho_cache, politica):
         self.tamanho_cache = tamanho_cache
         self.politica = politica
-        self.cache = collections.OrderedDict()  # Cache como dicionário ordenado
-        self.frequencia = {}  # Para rastrear a frequência no LFU
+        self.cache = collections.OrderedDict()  
+        self.frequencia = {}  
 
     def verificar_cache(self, endereco):
         if endereco in self.cache:
             print(f"Cache Hit: {endereco} encontrado.")
             if self.politica == 'LRU':
-                # Move para o final para indicar uso recente
+                
                 self.cache.move_to_end(endereco)
             if self.politica == 'LFU':
                 self.frequencia[endereco] += 1
